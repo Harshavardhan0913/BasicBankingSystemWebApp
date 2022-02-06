@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer</title>
+    <link rel="stylesheet" href="./static/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+    </div>
+    <br>
+    <div class="container" style="width: 60%">
+        <form method="POST" action="validate_transfer?customerId={{ currentCustomer['customerId'] }}">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Transfer From</th>
+                    <td>{{ currentCustomer['customerName'] }}</td>
+                </tr>
+                <tr>
+                    <th>Transfer to</th>
+                    <td>
+                        <select name="TransferTo">
+                            {% for c in otherCustomers %}
+                            <option value="{{ c['customerId'] }}">{{ c['customerName'] }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Enter Amount</th>
+                    <td><input type="number" name="transferAmount"><div style="font-size: small">Balance: {{ currentCustomer['balance'] }}</div></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input class="button btn-primary" type="submit" value="Transfer"></td>
+                </tr>
+            </table>
+        </form>
+    {% if status %}
+    {% if status == '0' %}
+    <div class="alert alert-success" role="alert">Transaction Successful</div>
+    {% elif status == '-1' %}
+     <div class="alert alert-danger" role="alert">Transaction Failed</div>
+     {% elif status == '1' %}
+     <div class="alert alert-warning" role="alert">Transaction Failed. Insufficient Balance</div>
+    {% endif %}
+    {% endif %}
+    </div>
+
+
+</body>
+</html>

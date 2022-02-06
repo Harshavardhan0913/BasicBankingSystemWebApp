@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Details</title>
+    <link rel="stylesheet" href="./static/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+    </div>
+    <br>
+    <div class="container" style="width: 60%;" align="center" >
+        <h2>Customer Details</h2>
+        <table class="table table-bordered">
+
+            <tr>
+                <th>Customer Id</th>
+                <td>{{ data['customerId'] }}</td>
+            </tr>
+            <tr>
+                <th>Customer Name</th>
+                <td>{{ data['customerName'] }}</td>
+            </tr>
+            <tr>
+                <th>Balance</th>
+                <td>{{ data['balance'] }}</td>
+            </tr>
+        </table>
+        <a class="button btn-primary" href="transfer?customerId={{ data['customerId'] }}">Transfer</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Customers</title>
+    <link rel="stylesheet" href="./static/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="topnav">
+        <a href="/">Home</a>
+    </div>
+
+<div class="container" style="width: 60%">
+    <h2>All Customers</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Customer</th>
+            <th>Account Balance</th>
+            <th>Action</th>
+        </tr>
+        {% if l!=0 %}
+        {% for d in data %}
+        <tr>
+            <td>{{ d['CustomerName'] }}</td>
+            <td>{{ d['Balance'] }}</td>
+            <td><a href="view_customer?customerId={{ d['customerId'] }}">View Customer</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</div>
+
+</body>
+</html>
